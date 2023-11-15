@@ -1,6 +1,6 @@
 # Frontend Mentor - Calculator app solution
 
-This is a solution to the [Calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/solutions/calculator-app-cVOoo_sma2). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
 ## Table of contents
 
@@ -25,8 +25,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Calculator App Solution](https://your-solution-url.com)
-- Live Site URL: [Calculator App](https://your-live-site-url.com)
+- Solution URL: [Calculator App Solution](https://github.com/Developer-Ashutosh/Calculator-App)
+- Live Site URL: [Calculator App](https://developer-ashutosh.github.io/Calculator-App/)
 
 ## My process
 
