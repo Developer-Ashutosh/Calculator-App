@@ -1,29 +1,22 @@
 const levels = document.querySelector(".levels");
 const rootElement = document.documentElement;
 
-const preferredTheme = () => {
+const toggleTheme = () => {
     // Apply the stored theme if any
     if (localStorage.getItem('preferredTheme')) {
-        applyTheme(localStorage.getItem('preferredTheme'));
+        applyThemeLogic(localStorage.getItem('preferredTheme'));
     }
 
     // Save user preference when they switch themes
     levels.addEventListener('click', () => {
-        const selectedTheme = localStorage.getItem('preferredTheme');
-        toggleTheme();
-        applyTheme(selectedTheme);
+        const selectedTheme = rootElement.getAttribute("data-theme");
+        applyThemeLogic(selectedTheme);
         localStorage.setItem('preferredTheme', selectedTheme);
-        console.log("applied");
     });
 };
 
-// Function to switch themes
-const toggleTheme = () => {
-    levels.addEventListener("click", () => applyTheme(rootElement.getAttribute("data-theme")));
-};
-
 // Function to apply the theme
-const applyTheme = (theme) => {
+const applyThemeLogic = (theme) => {
 
     // Switching themes
     switch (theme) {
@@ -88,6 +81,5 @@ const evaluateData = () => {
 };
 
 // Initial call for all functions
-preferredTheme();
 toggleTheme();
 evaluateData();

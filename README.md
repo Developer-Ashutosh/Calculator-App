@@ -40,9 +40,8 @@ Users should be able to:
 ### What I learned 
 
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+localStorage.getItem('preferredTheme');
+localStorage.setItem('preferredTheme', selectedTheme);
 ```
 ## Author
 
