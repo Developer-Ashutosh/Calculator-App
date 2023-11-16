@@ -1,31 +1,49 @@
-// Function to switch themes
-const toggleTheme = () => {
-    const levels = document.querySelector(".levels");
+const levels = document.querySelector(".levels");
+const rootElement = document.documentElement;
 
-    levels.addEventListener("click", () => {
-        const rootElement = document.documentElement;
-        const currentTheme = rootElement.getAttribute("data-theme");
-        const caret = document.querySelector(".caret");
+const preferredTheme = () => {
+    // Apply the stored theme if any
+    if (localStorage.getItem('preferredTheme')) {
+        applyTheme(localStorage.getItem('preferredTheme'));
+    }
 
-        // Switching themes
-        switch (currentTheme) {
-            case "1":
-                rootElement.setAttribute("data-theme", "2");
-                updateCaretStyles(caret, "50%", "translate(-50%, -50%)");
-                break;
-            case "2":
-                rootElement.setAttribute("data-theme", "3");
-                updateCaretStyles(caret, "68.5%", "translateY(-50%)");
-                break;
-            default:
-                rootElement.setAttribute("data-theme", "1");
-                updateCaretStyles(caret, "8.5%", "translateY(-50%)");
-        }
+    // Save user preference when they switch themes
+    levels.addEventListener('click', () => {
+        const selectedTheme = localStorage.getItem('preferredTheme');
+        toggleTheme();
+        applyTheme(selectedTheme);
+        localStorage.setItem('preferredTheme', selectedTheme);
+        console.log("applied");
     });
 };
 
+// Function to switch themes
+const toggleTheme = () => {
+    levels.addEventListener("click", () => applyTheme(rootElement.getAttribute("data-theme")));
+};
+
+// Function to apply the theme
+const applyTheme = (theme) => {
+
+    // Switching themes
+    switch (theme) {
+        case "1":
+            rootElement.setAttribute("data-theme", "2");
+            updateCaretStyles("50%", "translate(-50%, -50%)");
+            break;
+        case "2":
+            rootElement.setAttribute("data-theme", "3");
+            updateCaretStyles("68.5%", "translateY(-50%)");
+            break;
+        default:
+            rootElement.setAttribute("data-theme", "1");
+            updateCaretStyles("8.5%", "translateY(-50%)");
+    }
+};
+
 // Function to update caret styles
-const updateCaretStyles = (caret, left, transform) => {
+const updateCaretStyles = (left, transform) => {
+    const caret = document.querySelector(".caret");
     caret.style.left = left;
     caret.style.transform = transform;
 };
@@ -70,5 +88,6 @@ const evaluateData = () => {
 };
 
 // Initial call for all functions
+preferredTheme();
 toggleTheme();
 evaluateData();
